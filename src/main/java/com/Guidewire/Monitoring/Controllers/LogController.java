@@ -22,6 +22,8 @@ public class LogController {
     public ResponseEntity<?> addLog(@RequestBody Object log) throws JsonProcessingException, ParseException {
         return ResponseEntity.ok(logCreationService.createLog(log));
     }
+
+
 }
 
 
