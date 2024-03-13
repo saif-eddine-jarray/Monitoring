@@ -1,6 +1,6 @@
 package com.Guidewire.Monitoring.Services.Interfaces;
 
-import com.Guidewire.Monitoring.Entities.Log.TransportPlugin;
+import com.Guidewire.Monitoring.Entities.TransportPlugin;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import java.util.Map;

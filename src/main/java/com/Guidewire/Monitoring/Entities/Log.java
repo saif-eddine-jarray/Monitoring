@@ -1,4 +1,4 @@
-package com.Guidewire.Monitoring.Entities.Log;
+package com.Guidewire.Monitoring.Entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -35,8 +35,6 @@ public class Log {
     public void setContent(String content) {
         this.content = content;
     }
-
-
 
 }
 

@@ -1,8 +1,8 @@
 package com.Guidewire.Monitoring.Services.Implementations;
 
-import com.Guidewire.Monitoring.Entities.Log.Document;
-import com.Guidewire.Monitoring.Entities.Log.Log;
-import com.Guidewire.Monitoring.Entities.Log.Progress;
+import com.Guidewire.Monitoring.Entities.Document;
+import com.Guidewire.Monitoring.Entities.Log;
+import com.Guidewire.Monitoring.Entities.Progress;
 import com.Guidewire.Monitoring.Repositories.DocumentRepo;
 import com.Guidewire.Monitoring.Services.Interfaces.I_RmsService;
 import com.fasterxml.jackson.core.JsonProcessingException;

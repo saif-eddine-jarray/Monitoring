@@ -1,4 +1,4 @@
-package com.Guidewire.Monitoring.Entities.Log;
+package com.Guidewire.Monitoring.Entities;
 
 public enum Progress {
     Generated,

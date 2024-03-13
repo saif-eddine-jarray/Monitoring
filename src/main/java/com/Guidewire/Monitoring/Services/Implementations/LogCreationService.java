@@ -1,7 +1,7 @@
 package com.Guidewire.Monitoring.Services.Implementations;
 
-import com.Guidewire.Monitoring.Entities.Log.Log;
-import com.Guidewire.Monitoring.Entities.Log.TransportPlugin;
+import com.Guidewire.Monitoring.Entities.Log;
+import com.Guidewire.Monitoring.Entities.TransportPlugin;
 import com.Guidewire.Monitoring.Repositories.LogRepo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;

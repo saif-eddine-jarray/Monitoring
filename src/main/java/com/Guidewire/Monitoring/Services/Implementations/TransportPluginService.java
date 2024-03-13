@@ -1,7 +1,7 @@
 package com.Guidewire.Monitoring.Services.Implementations;
 
-import com.Guidewire.Monitoring.Entities.Log.Log;
-import com.Guidewire.Monitoring.Entities.Log.TransportPlugin;
+import com.Guidewire.Monitoring.Entities.Log;
+import com.Guidewire.Monitoring.Entities.TransportPlugin;
 import com.Guidewire.Monitoring.Repositories.TransportPluginRepo;
 import com.Guidewire.Monitoring.Services.Interfaces.I_TransportPlugin;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -61,6 +61,9 @@ public class TransportPluginService implements I_TransportPlugin {
         documentId.fields().forEachRemaining(entry -> {
             map.put(Integer.parseInt(entry.getKey()), entry.getValue().asText());
         });
+        if (map.get(1)==null){
+            map.put(1,documentId.asText());
+        }
         return map;
     }
     public String getDeliveryMode(TransportPlugin transportPlugin) throws JsonProcessingException{
