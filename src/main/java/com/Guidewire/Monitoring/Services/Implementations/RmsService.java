@@ -30,11 +30,16 @@ public class RmsService implements I_RmsService {
         Document document=documentRepo.findById(publicID.substring(1,publicID.length()-1)).get();
         document.setAuthor(messageJson.get("Author").toString());
         document.setCabinetID(messageJson.get("CabinetID_Ext").toString());
-        document.setCabinetID(messageJson.get("DocUID").toString());
+        document.setDocUID(messageJson.get("DocUID").toString());
         document.setProductionSystem(messageJson.get("ProductionSystem_Ext").toString());
         document.setStatus(messageJson.get("Status").toString());
         document.setSecurityType(messageJson.get("SecurityType").toString());
         document.setSignatureMethod(messageJson.get("SignatureMethod_Ext").toString());
+        document.setCreateTime(messageJson.get("CreateTime").toString());
+        document.setUpdatetime(messageJson.get("UpdateTime").toString());
+        document.setSigned(Boolean.parseBoolean(messageJson.get("Signed_Ext").toString()));
+        document.setRejectionReason(messageJson.get("RejectionReason_Ext").toString());
+        document.setInbound(Boolean.parseBoolean(messageJson.get("Inbound").toString()));
         document.setProgress(Progress.Archived);
         return documentRepo.save(document);
     }

@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -80,6 +81,13 @@ public class TransportPluginService implements I_TransportPlugin {
         JsonNode jsonContent = objectMapper.readTree(log.getContent());
         TLog.setStatus(logService.isRequest(jsonContent));
         return transportPluginRepo.save(TLog);
+    }
+    public String getService(String content) throws JsonProcessingException {
+        return logService.getService(content);
+    }
+
+    public String getTimeStamp(String content) throws JsonProcessingException, ParseException {
+        return logService.getTimestamp(content);
     }
     
 }

@@ -22,7 +22,7 @@ public class LogService implements I_Log {
     public String getTimestamp(String content) throws JsonProcessingException, ParseException {
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode contentJson = objectMapper.readTree(content);
-        return contentJson.get("timestamp").toString();
+        return contentJson.get("timestamp").asText();
     }
 
     public String getHost(String content) throws JsonProcessingException {
@@ -30,13 +30,10 @@ public class LogService implements I_Log {
         JsonNode contentJson = objectMapper.readTree(content);
         return contentJson.get("host").toString();
     }
-
-    public LocalDateTime getService(String content) throws JsonProcessingException {
+    public String getService(String content) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode contentJson = objectMapper.readTree(content);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss.SSSX");
-        LocalDateTime timestamp = LocalDateTime.parse(contentJson.get("service").toString(), formatter);
-        return timestamp;
+        return contentJson.get("service").asText();
     }
 
     public String getMessage(String content) throws JsonProcessingException {
