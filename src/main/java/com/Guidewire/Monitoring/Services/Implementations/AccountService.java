@@ -4,9 +4,10 @@ import com.Guidewire.Monitoring.Entities.Account;
 import com.Guidewire.Monitoring.Repositories.AccountRepo;
 import com.Guidewire.Monitoring.Services.Interfaces.I_Account;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,14 +16,19 @@ public class AccountService implements I_Account {
     AccountRepo accountRepo;
 
     @Override
-    public Account createAccount(String id){
+    public Account createAccount(String id) {
         Account account = new Account();
         account.setId(id);
         return accountRepo.save(account);
     }
+
+    //    @Override
+//    public List<Account> getAllAccounts() {
+//        return accountRepo.findAll();
+//    }
     @Override
-    public List<Account> getAllAccounts() {
-        return accountRepo.findAll();
+    public Page<Account> getAllAccounts(Pageable pageable) {
+        return accountRepo.findAll(pageable);
     }
 
     @Override
