@@ -2,28 +2,58 @@ package com.Guidewire.Monitoring.Entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+
+import java.util.Date;
+
 @Entity
 
 public class Document {
     @Id
-    String PublicID;
-    String DocUID;
-    String CabinetID;
-    String Author;
-    String CreateTime;
-    Boolean Inbound;
-    String Name;
-    String DeliveryMode;
-    String DocumentTemplate;
-    String ProductionSystem;
-    String GwLinkedObject;
-    String RejectionReason;
-    String SecurityType;
-    String Status;
-    String SignatureMethod;
-    Boolean Signed;
+    String publicID;
+    String docUID;
+    String cabinetID;
+    String  author;
+    String createTime;
+    Boolean inbound;
+    String name;
+    String deliveryMode;
+    String documentTemplate;
+    String productionSystem;
+    String gwLinkedObject;
+    String rejectionReason;
+    String securityType;
+    String status;
+    String signatureMethod;
+    Boolean signed;
+    String service;
+    String updatetime;
+
+    public String getUpdatetime() {
+        return updatetime;
+    }
+
+    public void setUpdatetime(String updatetime) {
+        this.updatetime = updatetime;
+    }
 
     Progress progress;
+    Date timestamp;
+
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public String getService() {
+        return service;
+    }
+
+    public void setService(String service) {
+        this.service = service;
+    }
 
     public Progress getProgress() {
         return progress;
@@ -37,130 +67,130 @@ public class Document {
     }
 
     public String getPublicID() {
-        return PublicID;
+        return publicID;
     }
 
     public void setPublicID(String publicID) {
-        PublicID = publicID;
+        this.publicID = publicID;
     }
 
     public String getDocUID() {
-        return DocUID;
+        return docUID;
     }
 
     public void setDocUID(String docUID) {
-        DocUID = docUID;
+        this.docUID = docUID;
     }
 
     public String getCabinetID() {
-        return CabinetID;
+        return cabinetID;
     }
 
     public void setCabinetID(String cabinetID) {
-        CabinetID = cabinetID;
+        this.cabinetID = cabinetID;
     }
 
     public String getAuthor() {
-        return Author;
+        return author;
     }
 
     public void setAuthor(String author) {
-        Author = author;
+        this.author = author;
     }
 
     public String getCreateTime() {
-        return CreateTime;
+        return createTime;
     }
 
     public void setCreateTime(String createTime) {
-        CreateTime = createTime;
+        this.createTime = createTime;
     }
 
     public Boolean getInbound() {
-        return Inbound;
+        return inbound;
     }
 
     public void setInbound(Boolean inbound) {
-        Inbound = inbound;
+        this.inbound = inbound;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getDeliveryMode() {
-        return DeliveryMode;
+        return deliveryMode;
     }
 
     public void setDeliveryMode(String deliveryMode) {
-        DeliveryMode = deliveryMode;
+        this.deliveryMode = deliveryMode;
     }
 
     public String getDocumentTemplate() {
-        return DocumentTemplate;
+        return documentTemplate;
     }
 
     public void setDocumentTemplate(String documentTemplate) {
-        DocumentTemplate = documentTemplate;
+        this.documentTemplate = documentTemplate;
     }
 
     public String getProductionSystem() {
-        return ProductionSystem;
+        return productionSystem;
     }
 
     public void setProductionSystem(String productionSystem) {
-        ProductionSystem = productionSystem;
+        this.productionSystem = productionSystem;
     }
 
     public String getGwLinkedObject() {
-        return GwLinkedObject;
+        return gwLinkedObject;
     }
 
     public void setGwLinkedObject(String gwLinkedObject) {
-        GwLinkedObject = gwLinkedObject;
+        this.gwLinkedObject = gwLinkedObject;
     }
 
     public String getRejectionReason() {
-        return RejectionReason;
+        return rejectionReason;
     }
 
     public void setRejectionReason(String rejectionReason) {
-        RejectionReason = rejectionReason;
+        this.rejectionReason = rejectionReason;
     }
 
     public String getSecurityType() {
-        return SecurityType;
+        return securityType;
     }
 
     public void setSecurityType(String securityType) {
-        SecurityType = securityType;
+        this.securityType = securityType;
     }
 
     public String getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(String status) {
-        Status = status;
+        this.status = status;
     }
 
     public String getSignatureMethod() {
-        return SignatureMethod;
+        return signatureMethod;
     }
 
     public void setSignatureMethod(String signatureMethod) {
-        SignatureMethod = signatureMethod;
+        this.signatureMethod = signatureMethod;
     }
 
     public Boolean getSigned() {
-        return Signed;
+        return signed;
     }
 
     public void setSigned(Boolean signed) {
-        Signed = signed;
+        this.signed = signed;
     }
 }

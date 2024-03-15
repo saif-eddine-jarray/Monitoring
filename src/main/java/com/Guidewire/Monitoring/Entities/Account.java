@@ -7,7 +7,6 @@ import jakarta.persistence.Id;
 public class Account {
     @Id
     String id;
-
     public String getId() {
         return id;
     }
