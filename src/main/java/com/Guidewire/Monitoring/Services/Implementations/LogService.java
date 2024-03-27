@@ -24,6 +24,11 @@ public class LogService implements I_Log {
         JsonNode contentJson = objectMapper.readTree(content);
         return contentJson.get("timestamp").asText();
     }
+    public String getLevel(String attributes)throws JsonProcessingException, ParseException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode contentJson = objectMapper.readTree(attributes);
+        return contentJson.get("level").toString().substring(1,contentJson.get("level").toString().length()-1);
+    }
 
     public String getHost(String content) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();

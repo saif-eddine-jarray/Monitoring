@@ -1,5 +1,6 @@
 package com.Guidewire.Monitoring.Entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
@@ -8,6 +9,7 @@ public class Log {
     @Id
     String id;
 
+    @Column(length = 6000)
     String content;
 
     public Log(String id, String content) {

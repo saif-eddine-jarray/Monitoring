@@ -1,5 +1,6 @@
 package com.Guidewire.Monitoring.Services.Implementations;
 
+import com.Guidewire.Monitoring.Entities.Document;
 import com.Guidewire.Monitoring.Entities.Log;
 import com.Guidewire.Monitoring.Entities.TransportPlugin;
 import com.Guidewire.Monitoring.Repositories.TransportPluginRepo;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 @Service
 public class TransportPluginService implements I_TransportPlugin {
@@ -67,19 +69,42 @@ public class TransportPluginService implements I_TransportPlugin {
         }
         return map;
     }
+
+    @Override
+    public String getRequestID(TransportPlugin transportPlugin) throws JsonProcessingException {
+            String attributes=logService.getAttributes(transportPlugin.getContent());
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode attributesJson = objectMapper.readTree(attributes);
+            return attributesJson.get("contextMap").get("requestId: ").asText();
+    }
+    public String getErrorRequestID(TransportPlugin transportPlugin) throws JsonProcessingException {
+        String attributes=logService.getAttributes(transportPlugin.getContent());
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode attributesJson = objectMapper.readTree(attributes);
+        System.out.println(attributesJson.get("exceptionMessage").asText().substring(47,47+23));
+        return attributesJson.get("exceptionMessage").asText().substring(47,47+23);
+
+    }
+
     public String getDeliveryMode(TransportPlugin transportPlugin) throws JsonProcessingException{
         String attributes=logService.getAttributes(transportPlugin.getContent());
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode attributesJson = objectMapper.readTree(attributes);
         return attributesJson.get("contextMap").get("deliveryMode: ").toString();
     }
-    public TransportPlugin createLog(Log log) throws JsonProcessingException {
+    public TransportPlugin createLog(Log log) throws JsonProcessingException, ParseException {
         TransportPlugin TLog= new TransportPlugin();
         TLog.setId(log.getId());
         TLog.setContent(log.getContent());
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode jsonContent = objectMapper.readTree(log.getContent());
         TLog.setStatus(logService.isRequest(jsonContent));
+        System.out.println(logService.getLevel(logService.getAttributes(log.getContent())));
+        if(Objects.equals(logService.getLevel(logService.getAttributes(log.getContent())), "ERROR")){
+            TLog.setRequestID(getErrorRequestID(TLog));
+        }else{
+            TLog.setRequestID(getRequestID(TLog));
+        }
         return transportPluginRepo.save(TLog);
     }
     public String getService(String content) throws JsonProcessingException {
@@ -88,6 +113,11 @@ public class TransportPluginService implements I_TransportPlugin {
 
     public String getTimeStamp(String content) throws JsonProcessingException, ParseException {
         return logService.getTimestamp(content);
+    }
+
+    public TransportPlugin findByReqID(String id){
+        System.out.println(id);
+        return transportPluginRepo.findByRequestIDAndStatus(id,true);
     }
     
 }

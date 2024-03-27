@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TransportPluginRepo extends JpaRepository<TransportPlugin,String> {
+    TransportPlugin findByRequestIDAndStatus(String id,Boolean bool);
 }
