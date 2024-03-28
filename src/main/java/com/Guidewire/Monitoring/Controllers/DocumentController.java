@@ -8,9 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
-import java.util.Date;
-@CrossOrigin
+import java.util.Map;
 
+@CrossOrigin
 @Controller
 @RequestMapping("document")
 public class DocumentController {
@@ -44,5 +44,15 @@ public class DocumentController {
     public ResponseEntity<?> getDocuments(@PathVariable int pageNumber,@PathVariable int pageSize){
         return ResponseEntity.ok(documentService.getDocuments(pageNumber,pageSize));
     }
+
+
+    @GetMapping("/documents/count-by-date")
+    public Map<String, int[]> getDocumentCountsByDate(
+            @RequestParam String startDate,
+            @RequestParam String endDate
+    ) throws ParseException {
+        return documentService.getNumbersByCenter(startDate, endDate);
+    }
+
 }
 

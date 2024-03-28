@@ -3,18 +3,14 @@ package com.Guidewire.Monitoring.Services.Implementations;
 import com.Guidewire.Monitoring.Entities.Document;
 import com.Guidewire.Monitoring.Entities.Progress;
 import com.Guidewire.Monitoring.Entities.TransportPlugin;
-import com.Guidewire.Monitoring.Repositories.AccountRepo;
 import com.Guidewire.Monitoring.Repositories.DocumentRepo;
 import com.Guidewire.Monitoring.Services.Interfaces.I_Document;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import org.hibernate.query.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 
-import javax.print.Doc;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;

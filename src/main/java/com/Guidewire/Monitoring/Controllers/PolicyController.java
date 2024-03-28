@@ -12,27 +12,24 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
 @RequestMapping("/policies")
+@CrossOrigin(origins = "http://localhost:3000")
 public class PolicyController {
+
     @Autowired
     private PolicyService policyService;
 
-
-
     @GetMapping("/getAll")
     public ResponseEntity<Page<Policy>> getAllPolicies(@RequestParam(defaultValue = "0") int pageNumber,
-                                                        @RequestParam(defaultValue = "10") int pageSize) {
+                                                       @RequestParam(defaultValue = "100") int pageSize) {
         Pageable pageable = PageRequest.of(pageNumber, pageSize);
         Page<Policy> policies = policyService.getAllPolicies(pageable);
         return ResponseEntity.ok(policies);
     }
 
-
     @GetMapping("/{id}")
     public Policy getPolicyById(@PathVariable String id) {
         return policyService.getPolicyById(id);
     }
-
 }

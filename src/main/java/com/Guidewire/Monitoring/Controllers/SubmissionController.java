@@ -14,28 +14,22 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/submissions")
+@CrossOrigin(origins = "http://localhost:3000")
 public class SubmissionController {
 
     @Autowired
     private SubmissionService submissionService;
 
-
-
     @GetMapping("/getAll")
     public ResponseEntity<Page<Submission>> getSubmissions(@RequestParam(defaultValue = "0") int pageNumber,
-                                                           @RequestParam(defaultValue = "10") int pageSize) {
+                                                           @RequestParam(defaultValue = "100") int pageSize) {
         Pageable pageable = PageRequest.of(pageNumber, pageSize);
-        System.out.println(submissionService.getSubmissions(pageable));
         Page<Submission> submissions = submissionService.getSubmissions(pageable);
         return ResponseEntity.ok(submissions);
     }
-
 
     @GetMapping("/{id}")
     public Submission getSubmissionById(@PathVariable String id) {
         return submissionService.getSubmissionById(id);
     }
-
-
-
 }
