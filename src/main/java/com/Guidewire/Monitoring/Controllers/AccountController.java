@@ -20,7 +20,7 @@ public class AccountController {
 
     @GetMapping("/getAll")
     public ResponseEntity<Page<Account>> getAllAccounts(@RequestParam(defaultValue = "0") int pageNumber,
-                                                        @RequestParam(defaultValue = "10") int pageSize) {
+                                                        @RequestParam(defaultValue = "100") int pageSize) {
         Pageable pageable = PageRequest.of(pageNumber, pageSize);
         Page<Account> accounts = accountService.getAllAccounts(pageable);
         return ResponseEntity.ok(accounts);
