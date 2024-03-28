@@ -12,6 +12,9 @@ import java.util.Map;
 public interface I_Document {
     void createOutboundDocument(TransportPlugin transportPlugin) throws JsonProcessingException;
     List<Document> getDocuments(int pageNumber, int pageSize);
+
+    Map<String, int[]> getNumbersByCenter(String start, String end) throws ParseException;
+
     List<Document> getDocumentsByGWLinkedObject(String id);
     List<Document> getDocumentsByService(String Service);
     List<Document> getDocumentsByStatus(Progress status);

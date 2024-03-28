@@ -67,7 +67,7 @@ public class DocumentService implements I_Document {
     }
 
     @Override
-    public Map<String, Map<String, Integer>> getNumbersByCenter(String start, String end) throws ParseException {
+    public Map<String, int[]> getNumbersByCenter(String start, String end) throws ParseException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSSS");
          Date s=dateFormat.parse(start);
          Date e=dateFormat.parse(end);
